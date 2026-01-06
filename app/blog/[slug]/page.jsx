@@ -1,27 +1,35 @@
 import Link from 'next/link';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { makePostSlug } from '@/app/lib/slugify';
+
+export async function generateStaticParams() {
+  const res = await fetch('https://dummyjson.com/posts');
+  const data = await res.json();
+
+  return data.posts.map((post) => ({
+    slug: makePostSlug(post),
+  }));
+}
 
 async function getPostById(id) {
   const res = await fetch(`https://dummyjson.com/posts/${id}`, {
-    next: { revalidate: 3600 },
+    cache: 'force-cache',
   });
 
   if (!res.ok) return null;
   return res.json();
 }
 
-
 export async function generateMetadata({ params }) {
-  const { slug } = await params; 
+  const { slug } = await params;
 
   if (!slug || typeof slug !== 'string') {
-    return { title: 'Invalid Post' };
+    return { title: 'Post Not Found' };
   }
 
   const id = Number(slug.split('-')[0]);
   if (Number.isNaN(id)) {
-    return { title: 'Invalid Post' };
+    return { title: 'Post Not Found' };
   }
 
   const post = await getPostById(id);
@@ -38,9 +46,8 @@ export async function generateMetadata({ params }) {
   };
 }
 
-
 export default async function BlogDetailPage({ params }) {
-  const { slug } = await params; 
+  const { slug } = await params;
 
   if (!slug || typeof slug !== 'string') {
     notFound();
@@ -56,21 +63,15 @@ export default async function BlogDetailPage({ params }) {
     notFound();
   }
 
-  const correctSlug = makePostSlug(post);
-
-  if (slug !== correctSlug) {
-    redirect(`/blog/${correctSlug}`);
-  }
-
   return (
-    <article className="max-w-3xl mx-auto px-4">
-       <Link
+    <article className="max-w-3xl mx-auto px-4 py-8">
+      <Link
         href="/blog"
         className="inline-flex items-center mb-6 px-4 py-2 rounded-md border border-zinc-700 text-sm hover:bg-zinc-800 transition"
-
       >
         ← Back to Blogs
       </Link>
+
       <h1 className="text-3xl font-bold mb-4">
         {post.id}. {post.title}
       </h1>
