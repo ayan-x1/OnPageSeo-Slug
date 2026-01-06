@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Home | SEO Slug Demo',
+  title: 'Home | SEO Slug',
   description: 'Demonstration of SEO-friendly routing using Next.js',
 };
 
