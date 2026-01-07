@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import BackLink from "@/app/components/BackLink";
+import BackButton from "@/app/components/BackButton";
 function getIdFromSlug(slug) {
   if (!slug || typeof slug !== "string") return null;
   const id = Number(slug.split("-")[0]);
@@ -17,7 +17,7 @@ async function getPostById(id) {
 }
 
 export default async function BlogTagsPage({ params }) {
-  const { slug } = await params; 
+  const { slug } = await params;
 
   const id = getIdFromSlug(slug);
   if (!id) notFound();
@@ -26,15 +26,16 @@ export default async function BlogTagsPage({ params }) {
   if (!post) notFound();
 
   return (
-    <section className="max-w-3xl mx-auto px-4 py-8">
-      <BackLink href="/blog" label="Back to Blogs" />
-      <h1 className="text-2xl font-bold mb-4">Tags for: {post.title}</h1>
+    <section className="max-w-3xl mx-auto space-y-6">
+      <BackButton href={`/blog/${slug}`} label="Back to Blog" />
+
+      <h1 className="text-2xl font-bold">Tags for: {post.title}</h1>
+
       <ul className="space-y-1" style={{ color: "var(--muted)" }}>
         {post.tags.map((tag) => (
-          < li key={tag}>• {tag}</li>
+          <li key={tag}>• {tag}</li>
         ))}
       </ul>
-      
     </section>
   );
 }

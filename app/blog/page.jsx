@@ -22,17 +22,23 @@ export default async function BlogPage() {
 
   return (
     <section className="max-w-3xl mx-auto space-y-6">
-      <h1 className="text-3xl font-bold">Blogs</h1>
+  <h1 className="text-3xl font-bold">Blogs</h1>
 
-      <ul className="space-y-3">
-        {posts.map((post) => (
-          <li key={post.id}>
-            <Link href={`/blog/${makePostSlug(post)}`} className="underline">
-              {post.id}. {post.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+  <ul className="space-y-4">
+    {posts.map(post => (
+      <li key={post.id}>
+        <Link
+          href={`/blog/${makePostSlug(post)}`}
+          className="block hover:underline"
+        >
+          <span className="font-medium">
+            {post.id}. {post.title}
+          </span>
+        </Link>
+      </li>
+    ))}
+  </ul>
+</section>
+
   );
 }

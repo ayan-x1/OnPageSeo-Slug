@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Terms and Conditions",
-  description: "Terms and conditions of using this website",
+  title: 'Terms & Conditions | SEO Slug',
+  description: 'Terms and conditions for using the SEO Slug demo project.',
 };
 
 export default function TermsAndConditionsPage() {
@@ -8,18 +8,19 @@ export default function TermsAndConditionsPage() {
     <section className="max-w-3xl mx-auto space-y-4">
       <h1 className="text-3xl font-bold">Terms & Conditions</h1>
 
-      <p style={{ color: "var(--muted)" }}>
-        This website is provided for educational and demonstration purposes
-        only.
+      <p style={{ color: 'var(--muted)' }}>
+        This website is a demonstration project intended for educational and
+        portfolio purposes only.
       </p>
 
-      <p style={{ color: "var(--muted)" }}>
-        We make no guarantees regarding accuracy, availability, or completeness
-        of the content.
+      <p style={{ color: 'var(--muted)' }}>
+        The content, structure, and code are provided as-is, without any
+        warranties or guarantees of fitness for a particular purpose.
       </p>
 
-      <p style={{ color: "var(--muted)" }}>
-        By accessing this site, you agree to these terms and conditions.
+      <p style={{ color: 'var(--muted)' }}>
+        By using this website, you agree that the author is not liable for any
+        direct or indirect consequences arising from its use.
       </p>
     </section>
   );

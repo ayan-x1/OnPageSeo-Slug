@@ -5,18 +5,19 @@ import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
   return (
-    <nav
-      className="flex items-center justify-between px-6 py-4 border-b"
+    <header
+      className="border-b"
       style={{ borderColor: 'var(--border)' }}
     >
-      <div className="flex gap-4 text-sm sm:text-base">
-        <Link href="/">Home</Link>
-        <Link href="/blog">Blog</Link>
-        <Link href="/about-us">About</Link>
-      </div>
+      <nav className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-6 text-sm font-medium">
+          <Link href="/">Home</Link>
+          <Link href="/blog">Blog</Link>
+          <Link href="/about-us">About</Link>
+        </div>
 
-      {/* ICON TOGGLE ONLY */}
-      <ThemeToggle />
-    </nav>
+        <ThemeToggle />
+      </nav>
+    </header>
   );
 }

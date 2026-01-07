@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { makePostSlug } from "@/app/lib/slugify";
-import BackLink from "@/app/components/BackLink";
+import BackButton from "@/app/components/BackButton";
 function getIdFromSlug(slug) {
   if (!slug || typeof slug !== "string") return null;
   const id = Number(slug.split("-")[0]);
@@ -27,7 +27,7 @@ async function getPostById(id) {
 }
 
 export async function generateMetadata({ params }) {
-  const { slug } = await params; // ✅ REQUIRED
+  const { slug } = await params;
 
   const id = getIdFromSlug(slug);
   if (!id) return { title: "Post Not Found" };
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogDetailPage({ params }) {
-  const { slug } = await params; // ✅ REQUIRED
+  const { slug } = await params;
 
   const id = getIdFromSlug(slug);
   if (!id) notFound();
@@ -54,10 +54,10 @@ export default async function BlogDetailPage({ params }) {
   if (!post) notFound();
 
   return (
-    <article className="max-w-3xl mx-auto px-4 py-8">
-       <BackLink href="/blog" label="Back to Blogs" />
+    <article className="max-w-3xl mx-auto space-y-6">
+      <BackButton href="/blog" label="Back to Blogs" />
 
-      <h1 className="text-3xl font-bold mb-4">
+      <h1 className="text-3xl font-bold">
         {post.id}. {post.title}
       </h1>
 
@@ -65,15 +65,11 @@ export default async function BlogDetailPage({ params }) {
         {post.body}
       </p>
 
-      <div className="mt-6 text-sm text-zinc-400">
-        <Link
-          href={`/blog/${makePostSlug(post)}/tags`}
-          className="text-sm underline hover:text-white"
-          style={{ color: 'var(--muted)' }}
-        >
-          <strong>Tags: </strong>
-        </Link>
-        {post.tags.join(", ")}
+      <div className="text-sm">
+        <Link href={`/blog/${makePostSlug(post)}/tags`} className="underline">
+          Tags:
+        </Link>{" "}
+        <span style={{ color: "var(--muted)" }}>{post.tags.join(", ")}</span>
       </div>
     </article>
   );
