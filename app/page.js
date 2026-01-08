@@ -23,7 +23,7 @@ export const metadata = {
     title: "SEO Slug – SEO-Optimized Dynamic Routing with Next.js",
     description:
       "Clean URLs, slug-based routing, and SEO best practices implemented with the Next.js App Router.",
-    images: ["/og/seo1.png"],
+    images: ["/public/seo.png"],
   },
 };
 

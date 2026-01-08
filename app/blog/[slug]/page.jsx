@@ -22,27 +22,47 @@ async function getPostById(id) {
   const res = await fetch(`https://dummyjson.com/posts/${id}`, {
     cache: "force-cache",
   });
-
   if (!res.ok) return null;
   return res.json();
 }
 
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
-
-  const id = getIdFromSlug(slug);
-  if (!id) {
-    return { title: "Post Not Found" };
-  }
+  const id = getIdFromSlug(params.slug);
+  if (!id) return { title: "Post Not Found" };
 
   const post = await getPostById(id);
-  if (!post) {
-    return { title: "Post Not Found" };
-  }
+  if (!post) return { title: "Post Not Found" };
+
+  const ogImage = `https://on-page-seo-slug.vercel.app/og/blog?title=${encodeURIComponent(
+    post.title
+  )}`;
 
   return {
-    title: `${post.title} | Blog`,
-    description: `Read "${post.title}" in this SEO-optimized blog post showcasing clean, slug-based dynamic routing built with the Next.js App Router.`,
+    title: `${post.title}`,
+    description: post.body.slice(0, 155),
+
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.body.slice(0, 155),
+      url: `https://on-page-seo-slug.vercel.app/blog/${makePostSlug(post)}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.body.slice(0, 155),
+      images: [ogImage],
+    },
+
     alternates: {
       canonical: `/blog/${makePostSlug(post)}`,
     },
@@ -50,9 +70,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogDetailPage({ params }) {
-  const { slug } = await params;
-
-  const id = getIdFromSlug(slug);
+  const id = getIdFromSlug(params.slug);
   if (!id) notFound();
 
   const post = await getPostById(id);
@@ -66,24 +84,13 @@ export default async function BlogDetailPage({ params }) {
         {post.id}. {post.title}
       </h1>
 
-      <p
-        className="leading-relaxed"
-        style={{ color: "var(--muted)" }}
-      >
+      <p className="leading-relaxed text-muted-foreground">
         {post.body}
       </p>
 
       <div className="text-sm">
-        <Link
-          href={`/blog/${makePostSlug(post)}/tags`}
-          className="no-underline hover:opacity-80"
-          style={{ color: "var(--fg)" }}
-        >
-          Tags:
-        </Link>{" "}
-        <span style={{ color: "var(--muted)" }}>
-          {post.tags.join(", ")}
-        </span>
+        <span className="font-medium">Tags:</span>{" "}
+        {post.tags.join(", ")}
       </div>
     </article>
   );
