@@ -9,7 +9,7 @@ export async function GET(request) {
   const safeTitle =
     title && title.trim().length > 0
       ? title.slice(0, 100)
-      : "SEO Slug Blog";
+      : "SEO slug";
 
   return new ImageResponse(
     (
