@@ -27,42 +27,17 @@ async function getPostById(id) {
 }
 
 export async function generateMetadata({ params }) {
-  const id = getIdFromSlug(params.slug);
+  const { slug } = await params;
+  const id = getIdFromSlug(slug);
+
   if (!id) return { title: "Post Not Found" };
 
   const post = await getPostById(id);
   if (!post) return { title: "Post Not Found" };
 
-  const ogImage = `https://on-page-seo-slug.vercel.app/og/blog?title=${encodeURIComponent(
-    post.title
-  )}`;
-
   return {
-    title: `${post.title}`,
+    title: post.title,
     description: post.body.slice(0, 155),
-
-    openGraph: {
-      type: "article",
-      title: post.title,
-      description: post.body.slice(0, 155),
-      url: `https://on-page-seo-slug.vercel.app/blog/${makePostSlug(post)}`,
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-    },
-
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.body.slice(0, 155),
-      images: [ogImage],
-    },
-
     alternates: {
       canonical: `/blog/${makePostSlug(post)}`,
     },
@@ -70,7 +45,9 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogDetailPage({ params }) {
-  const id = getIdFromSlug(params.slug);
+  const { slug } = await params;
+  const id = getIdFromSlug(slug);
+
   if (!id) notFound();
 
   const post = await getPostById(id);
@@ -88,10 +65,17 @@ export default async function BlogDetailPage({ params }) {
         {post.body}
       </p>
 
-      <div className="text-sm">
-        <span className="font-medium">Tags:</span>{" "}
-        {post.tags.join(", ")}
-      </div>
+      <div className="text-sm text-muted-foreground">
+  <Link
+    href={`/blog/${slug}/tags`}
+    className="font-medium text-foreground hover:underline"
+  >
+    Tags:
+  </Link>{" "}
+  {post.tags.join(", ")}
+</div>
+
+
     </article>
   );
 }
