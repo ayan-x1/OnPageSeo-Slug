@@ -11,7 +11,7 @@ export default function Navbar() {
   {/* Left: Logo */}
   <div className="flex items-center">
     <Link href="/" className="flex items-center gap-3">
-      <Image src="/seo.png" alt="Logo" width={40} height={40} />
+      <Image src="/og/seo1.png" alt="Logo" width={40} height={40} />
       <span className="font-semibold">Seo-friendly</span>
     </Link>
   </div>

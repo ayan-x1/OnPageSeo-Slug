@@ -8,14 +8,34 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: {
-    default: 'Seo Slug',
-    template: '%s - Seo Slug',
+    default: "SEO Slug",
+    template: "%s | SEO Slug",
   },
-  description: 'Come and read my ultimate blogs!',
+  description:
+    "SEO-optimized demo showcasing clean URLs, dynamic routing, and slug-based architecture built with Next.js App Router.",
+
+  openGraph: {
+    type: "website",
+    url: "https://on-page-seo-slug.vercel.app/",
+    title: "SEO Slug",
+    description:
+      "SEO-optimized demo showcasing clean URLs, dynamic routing, and slug-based architecture built with Next.js App Router.",
+    images: [
+      {
+        url: "https://on-page-seo-slug.vercel.app/og/seo1.png",
+        width: 1200,
+        height: 630,
+        alt: "SEO Slug – Next.js Dynamic Routing Demo",
+      },
+    ],
+  },
+
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
+    images: ["https://on-page-seo-slug.vercel.app/og/seo1.png"],
   },
 };
+
 
 export default function RootLayout({ children }) {
   return (
