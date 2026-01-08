@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { makePostSlug } from "@/app/lib/slugify";
 import BackButton from "@/app/components/BackButton";
+
 function getIdFromSlug(slug) {
   if (!slug || typeof slug !== "string") return null;
   const id = Number(slug.split("-")[0]);
@@ -30,14 +31,18 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
 
   const id = getIdFromSlug(slug);
-  if (!id) return { title: "Post Not Found" };
+  if (!id) {
+    return { title: "Post Not Found" };
+  }
 
   const post = await getPostById(id);
-  if (!post) return { title: "Post Not Found" };
+  if (!post) {
+    return { title: "Post Not Found" };
+  }
 
   return {
     title: `${post.title} | Blog`,
-    description: post.body.slice(0, 150),
+    description: `Read "${post.title}" in this SEO-optimized blog post showcasing clean, slug-based dynamic routing built with the Next.js App Router.`,
     alternates: {
       canonical: `/blog/${makePostSlug(post)}`,
     },
@@ -61,15 +66,24 @@ export default async function BlogDetailPage({ params }) {
         {post.id}. {post.title}
       </h1>
 
-      <p style={{ color: "var(--muted)" }} className="leading-relaxed">
+      <p
+        className="leading-relaxed"
+        style={{ color: "var(--muted)" }}
+      >
         {post.body}
       </p>
 
       <div className="text-sm">
-        <Link href={`/blog/${makePostSlug(post)}/tags`} className="underline">
+        <Link
+          href={`/blog/${makePostSlug(post)}/tags`}
+          className="no-underline hover:opacity-80"
+          style={{ color: "var(--fg)" }}
+        >
           Tags:
         </Link>{" "}
-        <span style={{ color: "var(--muted)" }}>{post.tags.join(", ")}</span>
+        <span style={{ color: "var(--muted)" }}>
+          {post.tags.join(", ")}
+        </span>
       </div>
     </article>
   );
