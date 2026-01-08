@@ -1,8 +1,32 @@
 export const metadata = {
-  title: "Home | SEO Slug",
+  title: "SEO Slug – SEO-Optimized Dynamic Routing with Next.js",
   description:
-    "Demonstration of SEO-friendly dynamic routing using clean, slug-based URLs built with the Next.js App Router.",
+    "Learn how SEO-friendly slug-based dynamic routing improves discoverability using the Next.js App Router with real-world architecture.",
+  openGraph: {
+    title: "SEO Slug – SEO-Optimized Dynamic Routing with Next.js",
+    description:
+      "A production-ready demo showcasing clean URLs, dynamic routing, and SEO best practices using Next.js App Router.",
+    url: "https://on-page-seo-slug.vercel.app/",
+    siteName: "SEO Slug",
+    images: [
+      {
+        url: "/og/seo1.png",
+        width: 1200,
+        height: 630,
+        alt: "SEO Slug – SEO Optimized Next.js Routing",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SEO Slug – SEO-Optimized Dynamic Routing with Next.js",
+    description:
+      "Clean URLs, slug-based routing, and SEO best practices implemented with the Next.js App Router.",
+    images: ["/og/seo1.png"],
+  },
 };
+
 
 export default function HomePage() {
   return (
