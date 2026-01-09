@@ -12,14 +12,14 @@ export const metadata = {
     template: "%s | SEO Slug",
   },
   description:
-    "SEO-optimized demo showcasing clean URLs, dynamic routing, and slug-based architecture built with Next.js App Router.",
+    "SEO-optimized showcasing clean URLs, dynamic routing, and slug-based architecture built with Next.js App Router.",
 
   openGraph: {
   type: "website",
   url: "https://on-page-seo-slug.vercel.app/",
   title: "SEO Slug – SEO-Optimized Dynamic Routing with Next.js",
   description:
-    "A production-ready demo showcasing clean URLs, dynamic routing, and SEO best practices using Next.js App Router.",
+    "A production-ready showcasing clean URLs, dynamic routing, and SEO best practices using Next.js App Router.",
   images: [
     {
       url: "https://on-page-seo-slug.vercel.app/og/seo1.png",

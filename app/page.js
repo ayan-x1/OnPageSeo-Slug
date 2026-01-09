@@ -5,7 +5,7 @@ export const metadata = {
   openGraph: {
     title: "SEO Slug – SEO-Optimized Dynamic Routing with Next.js",
     description:
-      "A production-ready demo showcasing clean URLs, dynamic routing, and SEO best practices using Next.js App Router.",
+      "A production-ready showcasing clean URLs, dynamic routing, and SEO best practices using Next.js App Router.",
     url: "https://on-page-seo-slug.vercel.app/",
     siteName: "SEO Slug",
     images: [
