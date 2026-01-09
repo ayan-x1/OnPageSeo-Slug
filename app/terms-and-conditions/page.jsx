@@ -1,29 +1,29 @@
 export const metadata = {
-  title: 'Terms & Conditions | SEO Slug Demo',
+  title: 'Terms & Conditions | SEO-Optimized Dynamic Routing with Next.js',
   description:
     'Read the terms and conditions for using the SEO Slug demo project built with Next.js.',
   alternates: {
-    canonical: 'https://on-page-seo-slug.vercel.app/terms-conditions',
+    canonical: 'https://on-page-seo-slug.vercel.app/terms-and-conditions',
   },
   openGraph: {
-    title: 'Terms & Conditions | SEO Slug Demo',
+    title: 'Terms & Conditions | SEO-Optimized Dynamic Routing with Next.js',
     description:
       'Terms and conditions governing the use of the SEO-friendly Next.js slug routing demo.',
-    url: 'https://on-page-seo-slug.vercel.app/terms-conditions',
-    siteName: 'SEO Slug Demo',
+    url: 'https://on-page-seo-slug.vercel.app/terms-and-conditions',
+    siteName: 'SEO Slug',
     type: 'article',
     images: [
       {
         url: 'https://on-page-seo-slug.vercel.app/og/seo1.png',
         width: 1200,
         height: 630,
-        alt: 'Terms and Conditions – SEO Slug Demo',
+        alt: 'Terms and Conditions – SEO Optimized Next.js Routing',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Terms & Conditions | SEO Slug Demo',
+    title: 'Terms & Conditions | SEO-Optimized Dynamic Routing with Next.js',
     description:
       'Terms and conditions governing the use of the SEO-friendly Next.js slug routing demo.',
     images: ['https://on-page-seo-slug.vercel.app/og/seo1.png'],

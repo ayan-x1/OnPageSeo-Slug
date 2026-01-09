@@ -1,29 +1,29 @@
 export const metadata = {
-  title: 'About This Project | SEO Slug Demo',
+  title: 'About US | SEO-Optimized Dynamic Routing with Next.js',
   description:
     'Learn how this SEO-focused Next.js project implements slug-based dynamic routing and metadata.',
   alternates: {
-    canonical: 'https://on-page-seo-slug.vercel.app/about',
+    canonical: 'https://on-page-seo-slug.vercel.app/about-us ',
   },
   openGraph: {
-    title: 'About This Project | SEO Slug Demo',
+    title: 'About US | SEO-Optimized Dynamic Routing with Next.js',
     description:
       'An overview of an SEO-focused Next.js App Router project with dynamic slugs and metadata.',
-    url: 'https://on-page-seo-slug.vercel.app/about',
-    siteName: 'SEO Slug Demo',
+    url: 'https://on-page-seo-slug.vercel.app/about-us',
+    siteName: 'SEO Slug',
     type: 'website',
     images: [
       {
         url: 'https://on-page-seo-slug.vercel.app/og/seo1.png',
         width: 1200,
         height: 630,
-        alt: 'About – SEO Slug Demo Project',
+        alt: 'About – SEO Optimized Next.js Routing',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About This Project | SEO Slug Demo',
+    title: 'About US | SEO-Optimized Dynamic Routing with Next.js',
     description:
       'An overview of an SEO-focused Next.js App Router project with dynamic slugs and metadata.',
     images: ['https://on-page-seo-slug.vercel.app/og/seo1.png'],

@@ -1,29 +1,29 @@
 export const metadata = {
-  title: 'Privacy Policy | SEO Slug Demo',
+  title: 'Privacy Policy | SEO-Optimized Dynamic Routing with Next.js',
   description:
     'Read the privacy policy for the SEO-friendly slug routing demo built with Next.js App Router.',
   alternates: {
     canonical: 'https://on-page-seo-slug.vercel.app/privacy-policy',
   },
   openGraph: {
-    title: 'Privacy Policy | SEO Slug Demo',
+    title: 'Privacy Policy | SEO-Optimized Dynamic Routing with Next.js',
     description:
       'This project does not collect personal data. View the privacy policy for the SEO Slug demo.',
     url: 'https://on-page-seo-slug.vercel.app/privacy-policy',
-    siteName: 'SEO Slug Demo',
+    siteName: 'SEO Slug',
     type: 'article',
     images: [
       {
         url: 'https://on-page-seo-slug.vercel.app/og/seo1.png',
         width: 1200,
         height: 630,
-        alt: 'Privacy Policy – SEO Slug Demo',
+        alt: 'Privacy Policy – SEO Optimized Next.js Routing',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Privacy Policy | SEO Slug Demo',
+    title: 'Privacy Policy | SEO-Optimized Dynamic Routing with Next.js',
     description:
       'This project does not collect personal data. View the privacy policy for the SEO Slug demo.',
     images: [
