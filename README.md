@@ -8,7 +8,7 @@ This repository demonstrates how modern Next.js applications should structure ro
 
 ## Overview
 
-- Implements dynamic blog routing using `/blog/[slug]`
+- Implements dynamic subjects routing using `/subj/[slug]`
 - Applies dynamic metadata for improved SEO
 - Integrates external API data for realistic content handling
 - Deployed on Vercel for optimal Next.js support
@@ -21,7 +21,7 @@ This repository demonstrates how modern Next.js applications should structure ro
 app/
 ├── layout.jsx
 ├── page.jsx
-├── blog/
+├── subj/
 │   ├── page.jsx
 │   └── [slug]/
 │       └── page.jsx

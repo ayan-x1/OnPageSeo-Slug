@@ -18,7 +18,7 @@ export default function Navbar() {
 
   <div className="flex justify-center gap-6 text-sm font-medium">
     <Link href="/">Home</Link>
-    <Link href="/blog">Blog</Link>
+    <Link href="/subj">Subjects</Link>
     <Link href="/about-us">About</Link>
   </div>
 
