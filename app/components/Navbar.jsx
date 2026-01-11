@@ -7,7 +7,7 @@ import ThemeToggle from './ThemeToggle';
 export default function Navbar() {
   return (
     <header className="border-b" style={{ borderColor: 'var(--border)' }}>
-      <nav className="max-w-5xl mx-auto px-4 py-4 grid grid-cols-3 items-center">
+      <nav className="grid items-center max-w-5xl grid-cols-3 px-4 py-4 mx-auto">
   
   <div className="flex items-center">
     <Link href="/" className="flex items-center gap-3">
@@ -17,7 +17,7 @@ export default function Navbar() {
   </div>
 
   <div className="flex justify-center gap-6 text-sm font-medium">
-    <Link href="/">Home</Link>
+    <Link href="/">Dashboard</Link>
     <Link href="/subj">Subjects</Link>
     <Link href="/about-us">About</Link>
   </div>

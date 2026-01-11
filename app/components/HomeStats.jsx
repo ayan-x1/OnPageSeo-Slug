@@ -27,11 +27,11 @@ export default function HomeStats({ stats }) {
   const items = useMemo(() => stats ?? [], [stats]);
 
   return (
-    <section className="grid sm:grid-cols-3 gap-4">
+    <section className="grid gap-4 sm:grid-cols-3">
       {items.map((s) => (
         <div
           key={s.label}
-          className="rounded-xl border p-6 text-center space-y-1"
+          className="p-6 space-y-1 text-center border rounded-xl"
         >
           <div className="text-3xl font-bold tracking-tight">
             {useCountUp(s.value)}
