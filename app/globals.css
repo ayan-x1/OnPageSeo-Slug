@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+* {
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease;
+}
+
 :root {
   --bg: #ffffff;
   --fg: #171717;
@@ -23,4 +28,3 @@ body {
   background-color: var(--bg);
   color: var(--fg);
 }
-
