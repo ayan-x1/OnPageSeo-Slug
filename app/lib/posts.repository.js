@@ -2,7 +2,6 @@ import dataset from "@/app/data/student_classes_dataset_100.json";
 import { makePostSlug, getIdFromSlug } from "@/app/lib/slugify";
 
 export function getAllPosts() {
-  // dataset.items is the array of 100 items
   return dataset.items;
 }
 
@@ -18,19 +17,16 @@ export function getAllPostSlugs() {
   return dataset.items.map((item) => makePostSlug(item));
 }
 
-/**
- * For /subj/[slug]/tags route
- * Unique tag list for a post (topics + subject tags)
- */
 export function getTagsForPost(item) {
   const tags = new Set();
 
   // subject tags
   item.tags?.forEach((t) => tags.add(t));
 
-  // chapter tags
+  // chapter + topic tags
   item.chapters?.forEach((ch) => {
     ch.tags?.forEach((t) => tags.add(t));
+
     ch.topics?.forEach((tp) => {
       tp.tags?.forEach((t) => tags.add(t));
     });
@@ -39,14 +35,31 @@ export function getTagsForPost(item) {
   return Array.from(tags);
 }
 
-/**
- * Returns all posts that include a given tag
- */
 export function getPostsByTag(tag) {
+  if (!tag || typeof tag !== "string") return [];
   const items = dataset.items;
 
   return items.filter((item) => {
     const postTags = getTagsForPost(item).map((t) => t.toLowerCase());
     return postTags.includes(tag.toLowerCase());
   });
+}
+
+export function getTotalPosts() {
+  return dataset.items.length;
+}
+
+export function getTotalPages(perPage = 18) {
+  return Math.ceil(dataset.items.length / perPage);
+}
+
+export function getPostsPage(page = 1, perPage = 18) {
+  const currentPage = Number(page) || 1;
+
+  if (currentPage < 1) return [];
+
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+
+  return dataset.items.slice(start, end);
 }

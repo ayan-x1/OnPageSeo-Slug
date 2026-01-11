@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { getAllPosts } from "@/app/lib/posts.repository";
+import {
+  getPostsPage,
+  getTotalPages,
+  getTotalPosts,
+} from "@/app/lib/posts.repository";
 import { makePostSlug } from "@/app/lib/slugify";
 
 export const metadata = {
@@ -53,11 +57,16 @@ export const metadata = {
 };
 
 export default async function SubjPage() {
-  const posts = getAllPosts();
+  const perPage = 18;
+  const currentPage = 1;
+
+  const posts = getPostsPage(currentPage, perPage);
+  const totalSubjects = getTotalPosts();
+  const totalPages = getTotalPages(perPage);
 
   return (
     <section className="max-w-5xl mx-auto px-4 py-10 space-y-10">
-      {/* SEO + UX header like Home Page */}
+      {/* Header */}
       <header className="space-y-3 text-center max-w-3xl mx-auto">
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
           Subjects Directory
@@ -71,7 +80,8 @@ export default async function SubjPage() {
         </p>
 
         <p className="text-sm" style={{ color: "var(--muted)" }}>
-          Total Subjects: <b>{posts.length}</b>
+          Total Subjects: <b>{totalSubjects}</b> • Showing <b>{perPage}</b> per
+          page • Page <b>{currentPage}</b> of <b>{totalPages}</b>
         </p>
       </header>
 
@@ -100,10 +110,27 @@ export default async function SubjPage() {
             <p className="mt-3 text-sm line-clamp-3">{item.description}</p>
 
             <div className="mt-4 text-xs text-muted-foreground">
-              Chapters: {item.chapters?.length ?? 0} • Difficulty: {item.difficultyBand}
+              Chapters: {item.chapters?.length ?? 0} • Difficulty:{" "}
+              {item.difficultyBand ?? "N/A"}
             </div>
           </Link>
         ))}
+      </div>
+
+      {/* Pagination */}
+      <div className="flex items-center justify-center gap-3 pt-4">
+        <span className="text-sm text-muted-foreground">
+          Page <b>{currentPage}</b> / <b>{totalPages}</b>
+        </span>
+
+        {totalPages > 1 && (
+          <Link
+            href="/subj/page/2"
+            className="border rounded-lg px-4 py-2 text-sm hover:bg-muted transition"
+          >
+            Next →
+          </Link>
+        )}
       </div>
     </section>
   );
