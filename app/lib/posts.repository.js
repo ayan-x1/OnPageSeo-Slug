@@ -1,4 +1,4 @@
-import dataset from "@/app/data/student_classes_dataset_100.json";
+import dataset from "@/app/data/student_dataset.json";
 import { makePostSlug, getIdFromSlug } from "@/app/lib/slugify";
 
 export function getAllPosts() {

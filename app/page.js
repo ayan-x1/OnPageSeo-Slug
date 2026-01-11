@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import HomeStats from "@/app/components/HomeStats";
-import dataset from "@/app/data/student_classes_dataset_100.json";
+import dataset from "@/app/data/student_dataset.json";
 
 export const metadata = {
   title: "SEO Slug – SEO-Optimized Dynamic Routing with Next.js",
@@ -43,7 +43,6 @@ export const metadata = {
   robots: { index: true, follow: true },
 };
 
-// ✅ JSON-LD Schema (SEO Advanced)
 function JsonLd() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -84,7 +83,7 @@ function JsonLd() {
 export default function HomePage() {
   const items = dataset.items ?? [];
 
-  // ✅ compute stats
+  // compute stats
   const totalSubjects = items.length;
   const totalChapters = items.reduce(
     (sum, s) => sum + (s.chapters?.length ?? 0),
@@ -269,7 +268,6 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* SCREENSHOTS (Placeholder, optional) */}
       {/* SCREENSHOTS */}
       <section className="p-6 space-y-5 border rounded-xl">
         <div className="space-y-1">
@@ -281,6 +279,7 @@ export default function HomePage() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          
           {/* Home */}
           <a
             href="/screenshots/ss1.png"
