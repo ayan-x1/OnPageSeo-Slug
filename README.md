@@ -19,17 +19,51 @@ This repository demonstrates how modern Next.js applications should structure ro
 
 ```bash
 app/
-├── layout.jsx
-├── page.jsx
-├── subj/
-│   ├── page.jsx
-│   └── [slug]/
-│       └── page.jsx
+├── layout.jsx                
+├── page.jsx                  
+├── not-found.jsx             
+├── providers.jsx             
+├── globals.css               
+├── favicon.ico               
+│
 ├── about-us/
+│   └── page.jsx              
+│
 ├── privacy-policy/
+│   └── page.jsx              
+│
 ├── terms-and-conditions/
-lib/
-└── slugify.js
+│   └── page.jsx              
+│
+├── subj/
+│   ├── page.jsx              
+│   └── [slug]/
+│       ├── page.jsx          
+│       └── tags/
+│           └── page.jsx      
+│
+├── page/
+│   └── [pageNo]/
+│       └── page.jsx          
+│
+├── components/
+│   ├── Navbar.jsx            
+│   ├── Footer.jsx            
+│   ├── BackButton.jsx        
+│   ├── HomeStats.jsx         
+│   └── ThemeToggle.jsx       
+│
+├── data/
+│   └── student_dataset.json
+│
+├── lib/
+    └── posts.repository.js
+│   └── slugify.js            
+│
+public/
+├── og/
+│   └── default.png           
+└── screenshots/              
 ```
 ---
 
