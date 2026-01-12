@@ -66,7 +66,7 @@ function JsonLd() {
         offers: {
           "@type": "Offer",
           price: "0",
-          priceCurrency: "USD",
+          priceCurrency: "INR",
         },
       },
     ],
@@ -203,7 +203,7 @@ export default function HomePage() {
           <div className="p-4 space-y-2 rounded-lg bg-muted/30">
             <div className="font-medium">Subject Slug</div>
             <code className="text-xs break-all">
-              /subj/subj_xxx-physics-class-11-cbse-english
+              /subj/subj_xyz-physics-class-11-cbse-english
             </code>
           </div>
 
