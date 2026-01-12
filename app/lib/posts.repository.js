@@ -1,5 +1,6 @@
 import dataset from "@/app/data/student_dataset.json";
-import { makePostSlug, getIdFromSlug } from "@/app/lib/slugify";
+import { makePostSlug, getIdFromSlug, safeSlug } from "@/app/lib/slugify";
+
 
 export function getAllPosts() {
   return dataset.items;
@@ -9,8 +10,7 @@ export function getPostBySlug(slug) {
   const id = getIdFromSlug(slug);
   if (!id) return null;
 
-  const items = dataset.items;
-  return items.find((x) => x.subjectId === id) || null;
+  return dataset.items.find((x) => x.subjectId === id) || null;
 }
 
 export function getAllPostSlugs() {
@@ -20,13 +20,10 @@ export function getAllPostSlugs() {
 export function getTagsForPost(item) {
   const tags = new Set();
 
-  // subject tags
   item.tags?.forEach((t) => tags.add(t));
 
-  // chapter + topic tags
   item.chapters?.forEach((ch) => {
     ch.tags?.forEach((t) => tags.add(t));
-
     ch.topics?.forEach((tp) => {
       tp.tags?.forEach((t) => tags.add(t));
     });
@@ -37,9 +34,8 @@ export function getTagsForPost(item) {
 
 export function getPostsByTag(tag) {
   if (!tag || typeof tag !== "string") return [];
-  const items = dataset.items;
 
-  return items.filter((item) => {
+  return dataset.items.filter((item) => {
     const postTags = getTagsForPost(item).map((t) => t.toLowerCase());
     return postTags.includes(tag.toLowerCase());
   });
@@ -55,11 +51,43 @@ export function getTotalPages(perPage = 18) {
 
 export function getPostsPage(page = 1, perPage = 18) {
   const currentPage = Number(page) || 1;
-
   if (currentPage < 1) return [];
 
   const start = (currentPage - 1) * perPage;
-  const end = start + perPage;
+  return dataset.items.slice(start, start + perPage);
+}
 
-  return dataset.items.slice(start, end);
+export function getAllSubjectUrls(baseUrl) {
+  return dataset.items.map((item) => ({
+    url: `${baseUrl}/subj/${makePostSlug(item)}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.9,
+  }));
+}
+
+export function getAllTagUrls(baseUrl) {
+  const tags = new Set();
+
+  dataset.items.forEach((item) => {
+    getTagsForPost(item).forEach((t) => tags.add(t));
+  });
+
+  return Array.from(tags).map((tag) => ({
+    url: `${baseUrl}/tags/${safeSlug(tag)}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+}
+
+export function getAllPaginationUrls(baseUrl, perPage = 18) {
+  const totalPages = getTotalPages(perPage);
+
+  return Array.from({ length: totalPages }).map((_, i) => ({
+    url: `${baseUrl}/page/${i + 1}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.6,
+  }));
 }

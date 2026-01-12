@@ -52,12 +52,12 @@ function JsonLd() {
         name: "SEO Slug",
         url: "https://on-page-seo-slug.vercel.app/",
         description:
-          "SEO optimized slug routing demo built with Next.js App Router.",
+          "SEO optimized slug routing built with Next.js App Router.",
         inLanguage: "en",
       },
       {
         "@type": "SoftwareApplication",
-        name: "SEO Slug Demo",
+        name: "SEO Slug",
         applicationCategory: "DeveloperApplication",
         operatingSystem: "Web",
         url: "https://on-page-seo-slug.vercel.app/",
@@ -113,7 +113,7 @@ export default function HomePage() {
         </h1>
 
         <p className="text-base sm:text-lg" style={{ color: "var(--muted)" }}>
-          A real-world demo of <b>slug-based routing</b>, dynamic metadata, and
+          A real-world implementation of <b>slug-based routing</b>, dynamic metadata, and
           SEO best practices using the <b>Next.js App Router</b>. Includes
           pagination, nested dataset rendering, and tag-based discovery.
         </p>

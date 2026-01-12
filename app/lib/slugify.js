@@ -6,11 +6,6 @@ export function safeSlug(input) {
     .replace(/(^-|-$)+/g, "");
 }
 
-/**
- * Make SEO slug for subject item
- * example:
- * subj_abc123-physics-class-11-state-board-english
- */
 export function makePostSlug(item) {
   return [
     item.subjectId,
@@ -21,9 +16,6 @@ export function makePostSlug(item) {
   ].join("-");
 }
 
-/**
- * Extract subjectId from slug
- */
 export function getIdFromSlug(slug) {
   if (!slug || typeof slug !== "string") return null;
   return slug.split("-")[0] || null;
