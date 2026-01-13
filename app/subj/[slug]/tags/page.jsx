@@ -25,7 +25,7 @@ export default async function TagsPage({ params, searchParams }) {
   const related = tag ? getPostsByTag(tag) : [];
 
   return (
-    <section className="max-w-5xl mx-auto px-4 py-10 space-y-8">
+    <section className="max-w-5xl px-4 py-10 mx-auto space-y-8">
       <BackButton href={`/subj/${slug}`} label="Back to Subject" />
 
       <header className="space-y-2">
@@ -55,15 +55,15 @@ export default async function TagsPage({ params, searchParams }) {
             Subjects related to: <span className="underline">#{tag}</span>
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((p) => (
               <Link
                 key={p.subjectId}
                 href={`/subj/${makePostSlug(p)}`}
-                className="border rounded-xl p-4 hover:shadow-md transition"
+                className="p-4 transition border rounded-xl hover:shadow-md"
               >
                 <div className="font-semibold">{p.subject}</div>
-                <div className="text-xs text-muted-foreground mt-1">
+                <div className="mt-1 text-xs text-muted-foreground">
                   {p.subdivision} • {p.stream} • Class {p.classLevel}
                 </div>
               </Link>

@@ -45,7 +45,7 @@ export default async function SubjDetailPage({ params }) {
   const tags = getTagsForPost(item);
 
   return (
-    <article className="max-w-5xl mx-auto px-4 py-10 space-y-10">
+    <article className="max-w-5xl px-4 py-10 mx-auto space-y-10">
       <BackButton href="/subj" label="Back to Subjects" />
 
       {/* Header */}
@@ -65,7 +65,7 @@ export default async function SubjDetailPage({ params }) {
             <Link
               key={t}
               href={`/subj/${slug}/tags?tag=${encodeURIComponent(t)}`}
-              className="text-xs border rounded-full px-3 py-1 hover:bg-muted transition"
+              className="px-3 py-1 text-xs transition border rounded-full hover:bg-muted"
             >
               #{t}
             </Link>
@@ -79,7 +79,7 @@ export default async function SubjDetailPage({ params }) {
 
         <div className="space-y-6">
           {item.chapters.map((ch) => (
-            <div key={ch.chapterId} className="border rounded-xl p-5 space-y-3">
+            <div key={ch.chapterId} className="p-5 space-y-3 border rounded-xl">
               <div className="flex items-start justify-between gap-4">
                 <h3 className="text-lg font-semibold">
                   {ch.sequenceNo}. {ch.chapterTitle}
@@ -96,13 +96,13 @@ export default async function SubjDetailPage({ params }) {
               {/* Topics */}
               <div className="pt-2 space-y-3">
                 {ch.topics.map((t) => (
-                  <div key={t.topicId} className="rounded-lg bg-muted/30 p-4">
+                  <div key={t.topicId} className="p-4 rounded-lg bg-muted/30">
                     <div className="font-medium">{t.title}</div>
-                    <div className="text-sm text-muted-foreground mt-1">
+                    <div className="mt-1 text-sm text-muted-foreground">
                       {t.description}
                     </div>
 
-                    <div className="text-xs text-muted-foreground mt-2">
+                    <div className="mt-2 text-xs text-muted-foreground">
                       Difficulty: {t.difficulty} • {t.estimatedMinutes} mins • Resources:{" "}
                       {t.resources?.length ?? 0}
                     </div>
